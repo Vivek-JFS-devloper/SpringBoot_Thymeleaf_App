@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Thymeleaf Example</title>
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+	<header>
+		<h1>Welcome to Thymeleaf Example</h1>
+	</header>
+
+	<p th:text="${sms}"></p>
+
+	<form th:action="@{/product}" th:object="${product}" th:method="post">
+		<table>
+
+
+
+			<tr>
+				<td>Product Name</td>
+				<td><input type="text" name="pname" /></td>
+			</tr>
+
+			<tr>
+				<td>Product Price</td>
+				<td><input type="number" name="price" /></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Submit" /></td>
+			</tr>
+		</table>
+	</form>
+
+	<footer>
+		<p>&copy; 2025 Thymeleaf Demo</p>
+	</footer>
+</body>
+
+</html>
