@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Thymeleaf Example</title>
 	<link rel="stylesheet" href="/css/style.css">
 </head>
@@ -13,21 +15,25 @@
 
 	<p th:text="${sms}"></p>
 
-	<form th:action="@{/product}" th:object="${product}" th:method="post">
+	<form th:action="@{/product}" th:object="${product}" method="post">
 		<table>
-
-
-
 			<tr>
 				<td>Product Name</td>
-				<td><input type="text" name="pname" /></td>
+				<td><input type="text" th:field="*{pname}" /></td> <!-- Corrected field binding -->
+				<td th:if = "${#field.hasError('pname')}" th:errors = "*{pname}" />  
 			</tr>
 
 			<tr>
 				<td>Product Price</td>
-				<td><input type="number" name="price" /></td>
+				<td><input type="number" th:field="*{price}" /></td> <!-- Corrected field binding -->
+				<td th:if = "${#field.hasError('price')}" th:errors = "*{price}" /> 
 			</tr>
-
+			
+			<tr>
+				<td>Product Quantity</td>
+				<td><input type="number" th:field="*{quantity}" /></td> <!-- Corrected field binding -->
+				<td th:if = "${#field.hasError('quantity')}" th:errors = "*{quantity}" /> 
+			</tr>
 			<tr>
 				<td></td>
 				<td><input type="submit" value="Submit" /></td>

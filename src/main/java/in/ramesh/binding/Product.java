@@ -1,9 +1,28 @@
 package in.ramesh.binding;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class Product {
+	
+	//from validation
 	private Integer pid;
-	private String pname;
+	@NotEmpty(message = "name is required")
+	@Size(min = 3,max = 10)
+	private String pname;  // Correct field name
+	@NotNull(message = "price is required")
 	private Double price;
+	@NotNull(message = "quantity is required")
+	private Integer quantity;
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
 
 	public Integer getPid() {
 		return pid;
@@ -13,11 +32,11 @@ public class Product {
 		this.pid = pid;
 	}
 
-	public String getPname() {
+	public String getPname() {  // Correct getter method
 		return pname;
 	}
 
-	public void setPname(String pname) {
+	public void setPname(String pname) {  // Correct setter method
 		this.pname = pname;
 	}
 
@@ -33,5 +52,4 @@ public class Product {
 	public String toString() {
 		return "Product [pid=" + pid + ", pname=" + pname + ", price=" + price + "]";
 	}
-
 }
